@@ -2,7 +2,7 @@
 
 Um projeto Django utilizando Python e Docker Compose
 
-para rodar:
+## Para rodar:
 
 1 - Crie uma venv usando o python
 ```
@@ -22,7 +22,7 @@ pip3 install -r requirements.txt
 
 
 ----------------------------------------
-Patrocinio:
+## Patrocinio:
 - TecnoTech Natal
 - Hostingator
 - Jerimun Jobs
