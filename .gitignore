@@ -1,0 +1,77 @@
+# ...existing code...
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+workvenv/
+.workvenv/
+env/
+ENV/
+workvenv-*/
+pip-wheel-metadata/
+.python-version
+
+# Environment variables / secrets
+.env
+.env.* 
+local_settings.py
+secrets.json
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+# Keep app migrations under source control? If not, uncomment:
+# */migrations/
+# But keep __init__.py:
+*/migrations/*.py[cod]
+!*/migrations/__init__.py
+
+# Static build / distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# Type checkers / linters
+.mypy_cache/
+.pyre/
+.pytype/
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Logs and runtime
+*.log
+*.pid
+
+# Misc
+*.sqlite3
+*.pem
+*.key
+
+# ...existing code...
