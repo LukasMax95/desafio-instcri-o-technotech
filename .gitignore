@@ -74,4 +74,6 @@ celerybeat.pid
 *.pem
 *.key
 
+#incluir o arquivo pdf
+*.pdf
 # ...existing code...
