@@ -15,12 +15,31 @@ $ source workvenv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-3 - Instale o django
-
+3 - Instale o django por meio do requirements.txt
 
 4 - Execute o projeto
 
+```
+python manage.py makemigrations --noinput
+python manage.py migrate --noinput
+python manage.py runserver
+```
+ou se preferir execute:
+```
+./start_update.sh
+```
 
+Template HTML:
+
+1 - acesse a pasta reacttemplate
+
+2 - dentro da subpasta template-projeto, execute:
+```
+npm install
+npm run dev
+```
+
+Para mais informações sobre o desenrolar do projeto, acesse o relatorio.md na pasta test_codes
 ----------------------------------------
 ## Patrocinio:
 - TecnoTech Natal
