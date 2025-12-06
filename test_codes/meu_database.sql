@@ -1,3 +1,6 @@
+-- como e o comando de criar o banco de dados caso não exista (condicional)?
+DROP DATABASE IF EXISTS meu_database;
+
 CREATE DATABASE meu_database;
 \c meu_database;
 
