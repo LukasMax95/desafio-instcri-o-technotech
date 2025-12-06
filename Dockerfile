@@ -16,6 +16,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY /test_codes/requirements.txt /app/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN pip install django-filter
 COPY /django/. /app/
 COPY /reacttemplate/. /app/
 COPY /test_codes/meu_database.sql /app/meu_database.sql
