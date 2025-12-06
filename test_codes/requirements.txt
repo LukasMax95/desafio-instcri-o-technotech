@@ -1,0 +1,6 @@
+numpy
+matplotlib
+pandas
+django
+djangorestframework
+markdown

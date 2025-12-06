@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    # Mapeia a porta do container (8000) para a porta da sua máquina (8000)
+    ports:
+      - "8000:8000"
+    volumes:
+      # Monta o código local no container (útil para desenvolvimento, recarga automática)
+      - .:/usr/src/app
+      # Volume para persistir o arquivo SQLite (embora o PostgreSQL seja preferido aqui)
+      - sqlite_data:/usr/src/app/db.sqlite3
+    env_file:
+      - .env
+    depends_on:
+      - db
+    # Define o uso do PostgreSQL ao subir o container
+    environment:
+      - USE_POSTGRES=True
+      - DATABASE_URL=postgres://user:password@db:5432/mydatabase # Apenas para redundância, será carregado do .env
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      # Volume para persistir os dados do PostgreSQL
+      - postgres_data:/var/lib/postgresql/data/
+    # Carrega as variáveis de ambiente necessárias para o PostgreSQL do .env
+    env_file:
+      - .env
+
+# Volumes para persistência de dados
+volumes:
+  postgres_data:
+  sqlite_data:
