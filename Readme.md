@@ -40,6 +40,10 @@ npm run dev
 ```
 
 Para mais informações sobre o desenrolar do projeto, acesse o relatorio.md na pasta test_codes
+
+
+
+
 ----------------------------------------
 ## Patrocinio:
 - TecnoTech Natal
