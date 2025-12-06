@@ -3,4 +3,5 @@ matplotlib
 pandas
 django
 djangorestframework
+django-filter
 markdown
