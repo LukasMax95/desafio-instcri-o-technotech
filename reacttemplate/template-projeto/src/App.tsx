@@ -16,12 +16,16 @@ function App() {
   const handleChange = (evento: { target: { value: SetStateAction<string> } }) => {
     // Atualizar o estado com o valor atual do input
     setNomeCurso(evento.target.value);
+    console.log(nome_curso);
   };
 
   const getAlunosPorCurso = () => {
-    axios.get<AlunosPorCurso[]>(`http://127.0.0.1:8000/api/v1/relatorios/alunos-por-curso/${nome_curso}/`)
+    axios.get<AlunosPorCurso[]>(`http://127.0.0.1:8001/api/v1/relatorios/alunos-por-curso/${nome_curso}/`)
       .then(response => {
+        console.log(response.data);
+        console.log(items2);
         setItems(response.data);
+        console.log(items);
       })
       .catch(error => {
         console.error('Erro ao buscar dados:', error);
@@ -30,7 +34,7 @@ function App() {
 
   useEffect(() => {
     // Buscar Cursos Ativos
-    axios.get<CursosAtivos[]>('http://127.0.0.1:8000/api/v1/relatorios/cursos-ativos/')
+    axios.get<CursosAtivos[]>('http://127.0.0.1:8001/api/v1/relatorios/cursos-ativos/')
       .then(response => {
         setItems2(response.data);
       })
@@ -56,18 +60,16 @@ function App() {
         <input type='text'
           onChange={handleChange}/>
         <button onClick={getAlunosPorCurso}>Buscar Alunos por Curso</button>
-        <ul>
-          {items.map((item, index) => (
-            <li key={index}>
-              Curso: {item.nome_curso} - Total de Alunos: {item.total_alunos}
-            </li>
-          ))}
-        </ul>
+        <ul>{items.map ((item, index) => (
+          <li key={index}>
+            Curso: {item.curso} - Nome: {item.alunos.toString()}
+          </li>
+        ))}</ul>
         <h2> Cursos Ativos </h2>
         <ul>
           {items2.map((item, index) => (
             <li key={index}>
-              Curso: {item.nome_curso} - Ativo: {item.ativo ? 'Sim' : 'Não'}
+              Curso: {item.nome_curso} - Ativo: {item.status}
             </li>
           ))}
         </ul>

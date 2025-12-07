@@ -1,11 +1,21 @@
-interface AlunosPorCurso {
+interface DataAluno {
   nome_curso: string;
-  total_alunos: number;
+  idade: number;
+  data_de_ingresso: string;
+}
+
+interface AlunosPorCurso{
+  curso: string;
+  alunos: DataAluno[];
 }
 
 interface CursosAtivos {
   nome_curso: string;
-  ativo: boolean;
+  duracao: number;
+  modalidade: string;
+  carga_horaria: number;
+  valor_de_inscricao: string;
+  status: string; // "ativo" ou "inativo"
 }
 
 interface TotalDeAlunos {
