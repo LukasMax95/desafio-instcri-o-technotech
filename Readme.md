@@ -10,7 +10,7 @@ $ python -m venv workvenv
 $ source workvenv/bin/activate
 ```
 
-2 - procure o arquivo `requiriments.txt` na pasta python code e execute:
+2 - procure o arquivo `requiriments.txt` na pasta test_code e execute:
 ```
 pip3 install -r requirements.txt
 ```
