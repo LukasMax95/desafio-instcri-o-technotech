@@ -42,6 +42,13 @@ npm run dev
 Para mais informações sobre o desenrolar do projeto, acesse o relatorio.md na pasta test_codes
 
 
+redenciais de acesso do django admin
+```
+usuário: LukasJardim
+senha: spiritchuva
+```
+
+
 
 
 ----------------------------------------
