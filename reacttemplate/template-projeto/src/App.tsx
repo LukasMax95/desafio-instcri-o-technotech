@@ -19,11 +19,15 @@ function App() {
     console.log(nome_curso);
   };
 
+
+  // verificar se o localhost do backend é 8000 ou 8001
+
   const getAlunosPorCurso = () => {
     axios.get<AlunosPorCurso[]>(`http://127.0.0.1:8001/api/v1/relatorios/alunos-por-curso/${nome_curso}/`)
       .then(response => {
         console.log(response.data);
         console.log(items2);
+        console.log(totalAlunos);
         setItems(response.data);
         console.log(items);
       })
@@ -41,6 +45,17 @@ function App() {
       .catch(error => {
         console.error('Erro ao buscar cursos ativos:', error);
       });
+    }, []);
+  
+    useEffect(() => {
+      // Buscar Total de Alunos
+      axios.get<TotalDeAlunos>('http://127.0.0.1:8001/api/v1/relatorios/total-de-alunos/')
+        .then(response => {
+          setTotalAlunos(response.data);
+        })
+        .catch(error => {
+          console.error('Erro ao buscar total de alunos:', error);
+        });
     }, []);
   return (
     <>
@@ -73,7 +88,10 @@ function App() {
             </li>
           ))}
         </ul>
-
+          <h2> Total de Alunos </h2>
+          <p>
+            {totalAlunos ? `Total de Alunos: ${totalAlunos.total_de_alunos}` : 'Carregando...'}
+          </p>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

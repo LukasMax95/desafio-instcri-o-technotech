@@ -19,7 +19,7 @@ interface CursosAtivos {
 }
 
 interface TotalDeAlunos {
-  total_alunos: number;
+  total_de_alunos: number;
 }
 
 interface MatriculasPagasVsPendentes {
