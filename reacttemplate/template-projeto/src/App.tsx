@@ -23,7 +23,7 @@ function App() {
   // verificar se o localhost do backend é 8000 ou 8001
 
   const getAlunosPorCurso = () => {
-    axios.get<AlunosPorCurso[]>(`http://127.0.0.1:8001/api/v1/relatorios/alunos-por-curso/${nome_curso}/`)
+    axios.get<AlunosPorCurso[]>(`http://127.0.0.1:8000/api/v1/relatorios/alunos-por-curso/${nome_curso}/`)
       .then(response => {
         console.log(response.data);
         console.log(items2);
@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     // Buscar Cursos Ativos
-    axios.get<CursosAtivos[]>('http://127.0.0.1:8001/api/v1/relatorios/cursos-ativos/')
+    axios.get<CursosAtivos[]>('http://127.0.0.1:8000/api/v1/relatorios/cursos-ativos/')
       .then(response => {
         setItems2(response.data);
       })
@@ -49,7 +49,7 @@ function App() {
   
     useEffect(() => {
       // Buscar Total de Alunos
-      axios.get<TotalDeAlunos>('http://127.0.0.1:8001/api/v1/relatorios/total-de-alunos/')
+      axios.get<TotalDeAlunos>('http://127.0.0.1:8000/api/v1/relatorios/total-de-alunos/')
         .then(response => {
           setTotalAlunos(response.data);
         })
