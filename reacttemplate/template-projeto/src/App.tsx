@@ -139,7 +139,7 @@ function App() {
 
       <h1>Templates HTML para backend SQLITE django</h1>
       <div className="card">
-        <h2>Financeiro</h2>
+        <h1>Seção 01: Financeiro</h1>
         <input type='text'
           onChange={handleChange2}/>
         <button onClick={financeiroGetAluno}>Total Pago/Devido</button>
@@ -194,7 +194,7 @@ function App() {
       </div>
       </div>
       <div className="card">
-        <h2>Relatórios</h2>
+        <h1>Seção 02: Relatórios</h1>
         <h2>Alunos por Curso: React</h2>
         <input type='text'
           onChange={handleChange}/>
