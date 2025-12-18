@@ -35,8 +35,49 @@
 
 .card {
   padding: 2em;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.aluno-info {
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  align-self: center;
+  width: 300px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}
+.curso-info{
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  align-self: center;
+  width: 400px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.aluno-curso-info {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.sem_ponto {
+  list-style-type: none;
+  padding: 0;
 }

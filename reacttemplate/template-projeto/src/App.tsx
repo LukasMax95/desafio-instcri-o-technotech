@@ -25,10 +25,10 @@ function App() {
   const getAlunosPorCurso = () => {
     axios.get<AlunosPorCurso[]>(`http://127.0.0.1:8000/api/v1/relatorios/alunos-por-curso/${nome_curso}/`)
       .then(response => {
-        console.log(response.data);
+        console.log([response.data]);
         console.log(items2);
         console.log(totalAlunos);
-        setItems(response.data);
+        setItems([response.data]);
         console.log(items);
       })
       .catch(error => {
@@ -43,6 +43,7 @@ function App() {
         setItems2(response.data);
       })
       .catch(error => {
+        alert(`Erro ao buscar cursos ativos: ${error}`);
         console.error('Erro ao buscar cursos ativos:', error);
       });
     }, []);
@@ -75,30 +76,42 @@ function App() {
         <input type='text'
           onChange={handleChange}/>
         <button onClick={getAlunosPorCurso}>Buscar Alunos por Curso</button>
-        <ul>{items.map ((item, index) => (
+        <ul className="sem_ponto">{items.map ((item, index) => (
           <li key={index}>
-            Curso: {item.curso} - Nome: {item.alunos.toString()}
+            <div className='aluno-curso-info'>
+            Curso: {item.curso}<br/>
+            <h3>Alunos:</h3>
+            {item.alunos.map((aluno, idx) => (
+              <div key={idx} className='aluno-info'>
+                <b>Nome do Aluno:</b> {aluno.nome}<br/>
+                <b>Idade:</b> {aluno.idade}<br/>
+                <b>Data de Ingresso:</b> {aluno.data_de_ingresso}
+              </div>
+            ))}
+            </div>
           </li>
+          
         ))}</ul>
         <h2> Cursos Ativos </h2>
-        <ul>
+        <ul className='sem_ponto'>
           {items2.map((item, index) => (
             <li key={index}>
-              Curso: {item.nome_curso} - Ativo: {item.status}
+              <div className='curso-info'>
+              <b>Curso:</b> {item.nome_curso}<br/>
+              <b>Duração:</b> {item.duracao} meses<br/>
+              <b>Modalidade:</b> {item.modalidade}<br/>
+              <b>Carga Horária:</b> {item.carga_horaria} horas<br/>
+              <b>Valor de Inscrição:</b> {item.valor_de_inscricao}<br/>
+              <b>Ativo:</b> {item.status}
+              </div>
             </li>
           ))}
         </ul>
           <h2> Total de Alunos </h2>
-          <p>
+          <div className='aluno-info'>
             {totalAlunos ? `Total de Alunos: ${totalAlunos.total_de_alunos}` : 'Carregando...'}
-          </p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+          </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

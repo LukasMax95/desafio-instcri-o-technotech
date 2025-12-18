@@ -1,12 +1,12 @@
 interface DataAluno {
-  nome_curso: string;
+  nome: string;
   idade: number;
   data_de_ingresso: string;
 }
 
 interface AlunosPorCurso{
   curso: string;
-  alunos: DataAluno[];
+  alunos: Alunos[];
 }
 
 interface CursosAtivos {
