@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Sum
 
 # Create your views here.
 from rest_framework.views import APIView
@@ -67,11 +68,15 @@ class TotalPagoPorAlunoView(APIView):
         except Aluno.DoesNotExist:
             return Response({'error': 'Aluno não encontrado'}, status=status.HTTP_404_NOT_FOUND)
         
-        curso = Curso.objects.get(matricula__aluno=aluno)
-        total_pago = Matricula.objects.filter(aluno=aluno, status="pago").count() * curso.valor_de_inscricao
+        resultado = Matricula.objects.filter(
+            aluno=aluno, 
+            status="pago"
+        ).aggregate(total=Sum('curso__valor_de_inscricao'))
+        
+        total_pago = resultado['total'] or 0.0
         return Response({'aluno': aluno.nome, 'total_pago': total_pago}, status=status.HTTP_200_OK)
 
-    
+# o aluno pode ter várias matrículas em cursos diferentes
 class TotalDevidoPorAlunoView(APIView):
     def get(self, request, nome_aluno):
         try:
@@ -79,8 +84,12 @@ class TotalDevidoPorAlunoView(APIView):
         except Aluno.DoesNotExist:
             return Response({'error': 'Aluno não encontrado'}, status=status.HTTP_404_NOT_FOUND)
         
-        curso = Curso.objects.get(matricula__aluno=aluno)
-        total_devido = Matricula.objects.filter(aluno=aluno, status="pendente").count() * curso.valor_de_inscricao
+        resultado = Matricula.objects.filter(
+            aluno=aluno, 
+            status="pendente"
+        ).aggregate(total=Sum('curso__valor_de_inscricao'))
+        
+        total_devido = resultado['total'] or 0.0
         return Response({'aluno': aluno.nome, 'total_devido': total_devido}, status=status.HTTP_200_OK)
     
 class CursosPorAlunoView(APIView):
